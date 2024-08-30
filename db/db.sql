@@ -1,0 +1,33 @@
+DROP DATABASE IF EXISTS surflineData;
+CREATE DATABASE surflineData;
+
+USE surflineData;
+
+DROP TABLE IF EXISTS spots
+
+CREATE TABLE IF NOT EXISTS spots(
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `surflineId` INT UNSIGNED NOT NULL,
+  `spotName` VARCHAR(255) NOT NULL,
+  `createdAt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `surflineUrl` VARCHAR(255) NOT NULL
+  PRIMARY KEY(id),
+  UNIQUE KEY (surflineId)
+)
+
+DROP TABLE IF EXISTS spotData
+
+CREATE TABLE IF NOT EXISTS spotData(
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `spotId` INT UNSIGNED NULL,
+  `lat` DECIMAL(8,6),
+  `lon` DECIMAL(9,6),
+  `abilityLevels` ARRAY NOT NULL
+  `boardTypes` ARRAY NOT NULL
+  `abilityDescription` TEXT,
+
+
+
+  PRIMARY KEY(id),
+  FOREIGN KEY(spotId) REFERENCES surfSpots(id)
+)
