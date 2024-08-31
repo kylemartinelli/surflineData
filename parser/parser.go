@@ -6,9 +6,9 @@ import (
 	"os"
 )
 
-func ReadCsv() []string{
+func ReadCsv(fileName string) ([]string, error){
 	var result []string
-	file, err := os.Open("/Users/kylemartinelli/surflineData/surfHrefs2.csv")
+	file, err := os.Open(fileName)
 		if err != nil {
 			fmt.Println("Error opening file", err)
 		}
@@ -18,12 +18,12 @@ func ReadCsv() []string{
 
 		records, err := reader.ReadAll()
 		if err != nil {
-			fmt.Println("Error reading csv", err)
+			return result, error(err)
 		}
-		fmt.Println(records)
-		// for i := 0 ;i < 10; i++{
-		// 	result = append(result, records[i][1])
-		// }
-		return result
+
+		for i := 1 ;i < 5; i++{
+			result = append(result, records[i][1])
+		}
+		return result, nil
 
 }

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/lylemartinelli/surflineData/parser"
 )
@@ -9,8 +10,14 @@ import (
 
 
 func main() {
-data := parser.ReadCsv()
-fmt.Print(data)
+data, err := parser.ReadCsv("/Users/kylemartinelli/surflineData/surfHrefs2.csv")
+if err != nil {
+	log.Fatal(err, "error parsing csv")
+}
+
+fmt.Println(data)
+
+
 
 
 
