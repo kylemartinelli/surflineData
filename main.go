@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/lylemartinelli/surflineData/parser"
+	"github.com/lylemartinelli/surflineData/requests"
 )
 
 
@@ -15,7 +15,7 @@ if err != nil {
 	log.Fatal(err, "error parsing csv")
 }
 
-fmt.Println(data)
+requests.PingSurflineServices(data)
 
 
 
