@@ -20,9 +20,9 @@ func PingSurflineServices(ids []string)  {
 		panic(err)
 	}
 
-	for _, id := range ids {
+	for range ids {
 		queryParams := url.Values{}
-		queryParams.Add("spotId", id)
+		queryParams.Add("spotId", "5842041f4e65fad6a7708813")
 		baseUrl.RawQuery = queryParams.Encode()
 
 		makeRequest(baseUrl.String())
@@ -53,7 +53,7 @@ func makeRequest (url string) string {
 	if err != nil {
 		log.Fatal("Failed to unmarshal json: ", err)
 	}
-fmt.Println(responseData.Spot.Lat)
+fmt.Println(responseData.Spot.Breadcrumb[1])
 
 	return string(body)
 
