@@ -1,12 +1,17 @@
 package main
 
 import (
-	"github.com/kylemartinelli/surflineData/csvParser"
+	"fmt"
+
+	"github.com/lylemartinelli/surflineData/parser"
 )
 
-func main() {
 
-		data := ReadCsv()
+
+func main() {
+data := parser.ReadCsv()
+fmt.Print(data)
+
 
 
 

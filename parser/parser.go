@@ -1,4 +1,4 @@
-package csvParser
+package parser
 
 import (
 	"encoding/csv"
@@ -20,9 +20,10 @@ func ReadCsv() []string{
 		if err != nil {
 			fmt.Println("Error reading csv", err)
 		}
-		for i := 0 ;i < 10; i++{
-			result = append(result, records[i][1])
-		}
+		fmt.Println(records)
+		// for i := 0 ;i < 10; i++{
+		// 	result = append(result, records[i][1])
+		// }
 		return result
 
 }
