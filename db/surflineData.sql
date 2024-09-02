@@ -1,9 +1,9 @@
 
-DROP TABLE IF EXISTS spots;
+DROP TABLE IF EXISTS spots CASCADE;
 
 CREATE TABLE IF NOT EXISTS spots(
   id  SERIAL PRIMARY KEY,
-  surflineId INT NOT NULL UNIQUE,
+  surflineId VARCHAR(255) NOT NULL UNIQUE,
   surflineUrl VARCHAR(255) NOT NULL,
   spotName VARCHAR(255) NOT NULL,
   lat DECIMAL(8,6),
@@ -92,4 +92,4 @@ CREATE TABLE IF NOT EXISTS spotBreadCrumbs(
 
 
 -- mysql -u root -h localhost -p < db/surflineData.sql
--- psql surflinedata -a -f db/surflineData.sql
+-- psql -U kylemartinelli surflinedata -a -f db/surflineData.sql

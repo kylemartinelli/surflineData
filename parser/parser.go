@@ -6,8 +6,10 @@ import (
 	"os"
 )
 
-func ReadCsv(fileName string) ([]string, error){
-	var result []string
+func ReadCsv(fileName string) ([][]string, error){
+
+
+
 	file, err := os.Open(fileName)
 		if err != nil {
 			fmt.Println("Error opening file", err)
@@ -18,12 +20,9 @@ func ReadCsv(fileName string) ([]string, error){
 
 		records, err := reader.ReadAll()
 		if err != nil {
-			return result, error(err)
+			return records, error(err)
 		}
 
-		for i := 1 ;i < 5; i++{
-			result = append(result, records[i][1])
-		}
-		return result, nil
+		return records, nil
 
 }
