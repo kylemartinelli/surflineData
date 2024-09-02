@@ -78,13 +78,13 @@ CREATE TABLE IF NOT EXISTS spotBreadCrumbs(
   id SERIAL PRIMARY KEY,
   spotId INT NOT NULL,
   country VARCHAR(255) NOT NULL,
-  countryId INT NOT NULL,
+  countryUrl VARCHAR(255) NOT NULL,
   region VARCHAR(255) NOT NULL,
-  regionId INT NOT NULL,
+  regionUrl VARCHAR(255) NOT NULL,
   subRegion VARCHAR(255) NOT NULL,
-  subRegionId INT NOT NULL,
+  subRegionUrl VARCHAR(255) NOT NULL,
   area VARCHAR(255) DEFAULT NULL,
-  areaId INT DEFAULT NULL,
+  areaUrl VARCHAR(255) DEFAULT NULL,
 
 
   FOREIGN KEY(spotId) REFERENCES spots(id)

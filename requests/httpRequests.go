@@ -23,7 +23,7 @@ func PingSurflineServices(ids [][]string, db *sql.DB)  {
 
 
 	for i := 1; i < len(ids); i++ {
-		//"5842041f4e65fad6a7708813"
+		//currId := "5842041f4e65fad6a7708813"
 		currId := ids[i][1]
 		queryParams := url.Values{}
 		queryParams.Add("spotId", currId)
