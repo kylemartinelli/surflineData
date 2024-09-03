@@ -3,6 +3,7 @@ package requests
 import (
 	"database/sql"
 	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -21,9 +22,10 @@ func PingSurflineServices(ids [][]string, db *sql.DB)  {
 		panic(err)
 	}
 
-
-	for i := 1; i < len(ids); i++ {
+	idLen := len(ids)
+	for i := 0; i < idLen; i++ {
 		//currId := "5842041f4e65fad6a7708813"
+		fmt.Println(ids[i], ids[i][1])
 		currId := ids[i][1]
 		queryParams := url.Values{}
 		queryParams.Add("spotId", currId)
@@ -31,13 +33,10 @@ func PingSurflineServices(ids [][]string, db *sql.DB)  {
 
 	 response := makeRequest(baseUrl.String())
 
-	 store.PrepareDataDb(response, baseUrl.String(), db)
+
+	  store.PrepareDataDb(response, baseUrl.String(), db, currId)
 
 
-
-
-
-		break
 	}
 
 

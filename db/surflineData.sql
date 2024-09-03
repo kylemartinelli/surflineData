@@ -3,9 +3,9 @@ DROP TABLE IF EXISTS spots CASCADE;
 
 CREATE TABLE IF NOT EXISTS spots(
   id  SERIAL PRIMARY KEY,
-  surflineId VARCHAR(255) NOT NULL UNIQUE,
-  surflineUrl VARCHAR(255) NOT NULL,
-  spotName VARCHAR(255) NOT NULL,
+  surflineId VARCHAR(2000) NOT NULL UNIQUE,
+  surflineUrl VARCHAR(2000) NOT NULL,
+  spotName VARCHAR(2000) NOT NULL,
   lat DECIMAL(8,6),
   lon DECIMAL(9,6),
   createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -16,56 +16,63 @@ DROP TABLE IF EXISTS idealConditions;
 CREATE TABLE IF NOT EXISTS idealConditions(
   id SERIAL PRIMARY KEY,
   spotId INT NOT NULL,
-  idealSeason VARCHAR(255)[],
-  idealSeasonDescription VARCHAR(255) NOT NULL,
-  idealTide VARCHAR(255)[],
-  idealTideDescription VARCHAR(255) NOT NULL,
-  idealSize VARCHAR(255)[],
-  idealSizeDescription VARCHAR(255) NOT NULL,
-  idealWindDirections VARCHAR(255)[],
-  idealWindDirectionsDescription VARCHAR(255) NOT NULL,
-  idealSwellDirections VARCHAR(255)[],
-  idealSwellDirectionsDescription VARCHAR(255) NOT NULL,
+  idealSeason VARCHAR(2000)[],
+  idealSeasonDescription VARCHAR(2000) NOT NULL,
+  idealTide VARCHAR(2000)[],
+  idealTideDescription VARCHAR(2000) NOT NULL,
+  idealSize VARCHAR(2000)[],
+  idealSizeDescription VARCHAR(2000) NOT NULL,
+  idealWindDirections VARCHAR(2000)[],
+  idealWindDirectionsDescription VARCHAR(2000) NOT NULL,
+  idealSwellDirections VARCHAR(2000)[],
+  idealSwellDirectionsDescription VARCHAR(2000) NOT NULL,
 
 
   FOREIGN KEY(spotId) REFERENCES spots(id) ON DELETE CASCADE
 );
+
+ALTER TABLE idealconditions ALTER COLUMN idealseasondescription type text;
+ALTER TABLE idealconditions ALTER COLUMN idealtidedescription type text;
+ALTER TABLE idealconditions ALTER COLUMN idealwinddirectionsdescription type text;
+ALTER TABLE idealconditions ALTER COLUMN idealsizedescription type text;
 
 
 DROP TABLE IF EXISTS spotCharacteristics;
 CREATE TABLE IF NOT EXISTS spotCharacteristics(
   id SERIAL PRIMARY KEY,
   spotId INT NOT NULL,
-  crowdFactorDescription VARCHAR(255) NOT NULL,
+  crowdFactorDescription TEXT NOT NULL,
   crowdFactorRating INT NOT NULL,
-  crowdFactorSummary VARCHAR(255) NOT NULL,
+  crowdFactorSummary TEXT NOT NULL,
 
-  localVibeDescription VARCHAR(255) NOT NULL,
+  localVibeDescription TEXT NOT NULL,
   localVibeRating INT NOT NULL,
-  localVibeSummary VARCHAR(255) NOT NULL,
+  localVibeSummary TEXT NOT NULL,
 
-  shoulderBurnDescription VARCHAR(255) NOT NULL,
+  shoulderBurnDescription TEXT NOT NULL,
   shoulderBurnRating INT NOT NULL,
-  shoulderBurnSummary VARCHAR(255) NOT NULL,
+  shoulderBurnSummary TEXT NOT NULL,
 
-  spotRatingDescription VARCHAR(255) NOT NULL,
+  spotRatingDescription TEXT NOT NULL,
   spotRatingRating INT NOT NULL,
-  spotRatingSummary VARCHAR(255) NOT NULL,
+  spotRatingSummary TEXT NOT NULL,
 
-  waterQualityDescription VARCHAR(255) NOT NULL,
+  waterQualityDescription TEXT NOT NULL,
   waterQualityRating INT NOT NULL,
-  waterQualitySummary VARCHAR(255) NOT NULL,
+  waterQualitySummary TEXT NOT NULL,
 
-  abilityLevels VARCHAR(255)[],
-  abilityDescription VARCHAR(255) NOT NULL,
+  abilityLevels TEXT [],
+  abilityDescription TEXT NOT NULL,
 
-  bottomType VARCHAR(255)[],
-  bottomTypeDescription VARCHAR(255) NOT NULL,
+  bottomType TEXT[],
+  bottomTypeDescription TEXT NOT NULL,
 
-  boardTypes  VARCHAR(255)[],
+  boardTypes  VARCHAR(2000)[],
 
-  breakType  VARCHAR(255)[],
+  breakType  VARCHAR(2000)[],
   spotDescription TEXT,
+
+  hazards TEXT,
 
   FOREIGN KEY (spotId) REFERENCES spots(id)
 
